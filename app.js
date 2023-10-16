@@ -16,6 +16,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json('public'));
 app.use(morgan('dev'));
+const dataProjects = require('./api/projects.json');
 
 // ROUTES
 // Start defining your routes here:
@@ -25,10 +26,10 @@ app.get('/', (request, response) => {
 app.get('/blog', (request, response) => {
   response.sendFile(__dirname + '/views/blog.html');
 });
-app.get('/data/projects', (request, response) => {
-  response.json(projects);
+app.get('/api/projects', (request, response) => {
+  response.json(dataProjects);
 });
-app.get('/data/articles', (request, response) => {
+app.get('/api/articles', (request, response) => {
   response.json(articles);
 });
 
